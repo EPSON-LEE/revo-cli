@@ -17,7 +17,7 @@ const initAction = () => {
 const initProject = (program) => {
   program
   .command('init')
-  .description('创建模块')
+  .description('初始化项目')
   .action(initAction)
 }
 

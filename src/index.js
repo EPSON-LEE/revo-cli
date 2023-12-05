@@ -1,3 +1,4 @@
+const {git statusRouter} = require('@modules/git status');
 #!/usr/bin/env node
 
 import fs from 'fs'

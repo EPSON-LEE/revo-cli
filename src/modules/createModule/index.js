@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import inquirer from 'inquirer';
 import util from 'util';
-import { createControllerTpl, createModelTpl } from './tpl.js'
+import { createControllerTpl, createModelTpl, createModuleTpl } from './tpl.js'
 
 const mkdir = util.promisify(fs.mkdir);
 const writeFile = util.promisify(fs.writeFile)
@@ -34,16 +34,13 @@ const createModules = async (name) => {
       // 5. 创建并写入 模块.model 入口文件
       await writeFile(path.join(targetPath, name, `${name}.model/index.js`), createModelTpl(name))
       // 6. 写入模块文件夹入口文件
+      await  writeFile(path.join(targetPath, name, `index.js`), createModuleTpl(name))
       // 7. 在 src 文件下的入口文件导入 router 文件
     }
   } catch (err) {
     console.log(err)
   }
 }
-
-// 1. 创建模块目录结构 
-// 2. 创建 模块.controller 和 模块.controller
-// 3. 写入 index.js
 
 const createModule = (program) => {
   program

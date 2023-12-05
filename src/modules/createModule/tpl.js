@@ -104,5 +104,6 @@ const createModuleTpl = (moduleName) => {
 
 export {
   createModelTpl,
+  createModuleTpl,
   createControllerTpl
 }

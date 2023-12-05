@@ -6,8 +6,8 @@ import { insertCodeToModuleIndex } from './utils.js'
 import { createControllerTpl, createModelTpl, createModuleTpl } from './tpl.js'
 
 const mkdir = util.promisify(fs.mkdir);
-const writeFile = util.promisify(fs.writeFile)
 const readFile = util.promisify(fs.readFile)
+const writeFile = util.promisify(fs.writeFile)
 
 
 const initAction = () => {

@@ -2,11 +2,10 @@ import fs from 'fs'
 import util from 'util'
 import path from 'path'
 
-
 const writeFile = util.promisify(fs.writeFile)
 const readFile = util.promisify(fs.readFile)
 
-const insertCodeToModuleIndex = async (srcPath, name) => {
+const inserDepToModuleIndex = async (srcPath, name) => {
   const newPath = path.join(srcPath, 'index.js')
   const oriData = await readFile(newPath, 'utf8')
   // 目标位置进行分割
@@ -27,5 +26,5 @@ const insertCodeToModuleIndex = async (srcPath, name) => {
 }
 
 export {
-  insertCodeToModuleIndex
+  inserDepToModuleIndex
 }

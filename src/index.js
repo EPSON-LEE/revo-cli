@@ -11,7 +11,9 @@ const pkg = await loadJSONFile('./package.json');
 
 program.version(pkg.version)
 
+// 初始化
 initProject(program)
+// 创建业务模块
 createModule(program)
 
 program.parse(process.argv)

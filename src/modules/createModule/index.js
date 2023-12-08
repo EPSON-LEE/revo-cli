@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import util from 'util';
 import inquirer from 'inquirer';
-import { insertCodeToModuleIndex } from './utils.js'
+import { inserDepToModuleIndex } from './utils.js'
 import { createControllerTpl, createModelTpl, createModuleTpl } from './tpl.js'
 
 const mkdir = util.promisify(fs.mkdir);
@@ -43,7 +43,9 @@ const createModules = async (name) => {
       // 6. 写入模块文件夹入口文件
       await  writeFile(path.join(modulesNamePath, `index.js`), createModuleTpl(name))
       // 7. 在 src 文件下的入口文件导入 router 文件
-      await insertCodeToModuleIndex(srcPath, name)
+      await inserDepToModuleIndex(srcPath, name)
+    } else {
+      console.log(`${modulesPath} 不存在`)
     }
   } catch (err) {
     console.log(err)
